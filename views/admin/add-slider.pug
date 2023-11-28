@@ -1,0 +1,67 @@
+extends ../layouts/main-layout.pug
+block content
+  h1 Slayt Ekle 
+  form.mt-4(action='add-slider', method='post')
+            .form-group-row
+              label.col-sm-2.col-from-label.mt-2(for='ProductName') slayt Başlık 
+              .col-sm-10
+                input#name.form-control(type='text', name='baslik', placeholder='slayt isim')
+            .form-group-row
+              label.col-sm-4.col-from-label.mt-2(for='ProductName') slayt açıklaması 
+              .col-sm-10
+                input#name.form-control(type='text', name='description', placeholder='slayt açıklaması')    
+            .form-group-row
+              label.col-sm-4.col-from-label.mt-2(for='ProductName') buton url
+              .col-sm-10
+                input#desc.form-control(type='text', name='url', placeholder='slayt yönledirme')
+            .form-group-row
+              label.col-sm-4.col-from-label.mt-2(for='ProductName') Slider Sırası
+              .col-sm-10
+                input#desc.form-control(type='number', name='sira', placeholder='slayt sırası')      
+            .form-group-row
+              label.col-sm-4.col-from-label.mt-2(for='ProductName') Görsel Url
+              .col-sm-10
+                input#desc.form-control(type='text', name='img',  placeholder='https://soliloquywp.com/wp-content/uploads/2013/05/action-backlit-beach-1046896-1200x450_c.jpg')     
+            .form-group-row
+              input.btn.btn-primary.float-right(type='submit', value='slayt kaydet')   
+  .container
+      .row.mt-5
+        .col-12
+          table.table.table-image
+            thead
+              tr
+                th(scope='col') id
+                | &#x9;&#x9;      
+                th(scope='col') G&ouml;rsel
+                | &#x9;&#x9;      
+                th(scope='col') Ba&scedil;l&imath;k
+                | &#x9;&#x9;      
+                th(scope='col') A&ccedil;&imath;klama
+                | &#x9;&#x9;      
+                th(scope='col') Link
+                | &#x9;&#x9;   
+                th(scope='col') sira
+                | &#x9;&#x9;    
+                th(scope='col') D&uuml;zenle
+            | &#x9;&#x9;  
+            tbody
+                each slideritems in slider
+                    tr
+                        th(scope='row') #{slideritems.id}
+                        | &#x9;&#x9;      
+                        td.w-25
+                            img.img-fluid(src=`${slideritems.img}` , alt='Sheep')
+                        | &#x9;&#x9;      
+                        td #{slideritems.baslik}
+                        | &#x9;&#x9;      
+                        td #{slideritems.description}
+                        | &#x9;&#x9;      
+                        td #{slideritems.url}
+                        | &#x9;&#x9;   
+                        td #{slideritems.sira}
+                        | &#x9;&#x9;   
+                        td(style="display:flex")
+                            a.btn.btn-secondary.btn-sm.float-right.m-1(href=`/edit-slider/${slideritems.id}`) Düzenle
+                            form(action="/edit-sliderdelete" method="POST" ) 
+                                input(type="hidden" name="sliderid" value=`${slideritems.id}` )
+                                button.m-1(type="submit").btn.btn-danger Slider sil

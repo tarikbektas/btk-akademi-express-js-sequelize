@@ -1,0 +1,37 @@
+extends layouts/main-layout.pug
+block content
+  h1 Katagori Ekle
+  form.mt-4(action='add-category', method='post')
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') Katagori İsmi
+              .col-sm-10
+                input#name.form-control(type='text', name='name', placeholder='Katagori ismi')
+             
+            .form-group-row
+              label.col-sm-4.col-from-label(for='ProductName')  Katagori Açıklama
+              .col-sm-10
+                input#desc.form-control(type='text', name='desc', placeholder='Katagori açıklama')
+             
+
+            .form-group-row
+              input.btn.btn-primary.float-right.mr-5.mt-2(type='submit', value='Katagori Ekle')
+  h1.mt-5 Katagori Yönet            
+  table.table 
+    thead
+      tr
+        th(scope='col') Katagori Id'si
+        th(scope='col') Katagori İsmi
+        th(scope='col') Katagori Açıklaması
+        th(scope='col') Yönet
+    tbody
+      each categorys in category
+        tr
+          th(scope='row') #{categorys.id}
+          td #{categorys.name}
+          td #{categorys.description}
+          td  
+            form(action="add-categorydelete" method="POST" ) 
+              input(type="hidden" name="categorysid" value=`${categorys.id}` )
+              button.m-1(type="submit").btn.btn-danger  Sil
+
+                      

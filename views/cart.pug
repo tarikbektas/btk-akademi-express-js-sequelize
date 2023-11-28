@@ -1,0 +1,42 @@
+extends layouts/main-layout.pug
+block content
+      .pb-5
+        .container
+          .row
+            .col-lg-12.p-5.bg-white.rounded.shadow-sm.mb-5
+              // Shopping cart table
+              .table-responsive
+                table.table
+                  thead
+                    tr
+                      th.border-0.bg-light(scope='col')
+                        .p-2.px-3.text-uppercase Ürün 
+                      th.border-0.bg-light(scope='col')
+                        .py-2.text-uppercase Fiyat
+                      th.border-0.bg-light(scope='col')
+                        .py-2.text-uppercase Adet
+                      th.border-0.bg-light(scope='col')
+                        .py-2.text-uppercase Sil
+                  tbody
+                    each cartitems in products
+                        tr
+                        th.border-0(scope='row')
+                            .p-2
+                            img.img-fluid.rounded.shadow-sm(src='https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg', alt='', width='70')
+                            .ml-3.d-inline-block.align-middle
+                                h5.mb-0
+                                a.text-dark.d-inline-block.align-middle(href='#')  #{cartitems.name}
+                                span.text-muted.font-weight-normal.font-italic.d-block #{cartitems.description}
+                        td.border-0.align-middle
+                            strong #{cartitems.price}$ 
+                        td.border-0.align-middle
+                            strong  1
+                        td.border-0.align-middle
+                            form(action="/delete-card" method="post")
+                                input(type="hidden" name="productid"  value =`${cartitems.id}`)
+                                button.text-dark.border-none(type="submit")
+                                    i.fa.fa-trash
+          form(action="/create-order" method="post")
+                 button(type="submit").btn.btn-danger.float-right Alışverişi Tamamla                  
+                                         
+                                    

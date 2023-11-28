@@ -1,0 +1,27 @@
+extends layouts/main-layout.pug
+block content
+  form(action='add-product', method='post')
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') isim
+              .col-sm-10
+                input#name.form-control(type='text', name='name', placeholder='ürün ismi')
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') ürün fiyat
+              .col-sm-10
+                input#price.form-control(type='number', name='price', placeholder='ürün fiyat')
+            .form-group-row
+              label.col-sm-2.col-from-label(for='categoryid') ürün Katagorisi
+              .col-sm-10
+                select#categoryid.form-control(name='categoryid')
+                  option(value="-1") Katagori Seç 
+                  each categorys in category 
+                    option(value=`${categorys.id}`) #{categorys.name}
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') Ürün açıklama
+              .col-sm-10
+                input#desc.form-control(type='text', name='desc', placeholder='Ürün açıklama')
+             
+
+
+            .form-group-row
+              input.btn.btn-primary.float-right(type='submit', value='ürün kaydet')

@@ -1,0 +1,25 @@
+mixin createproduct(veris)
+  .col-md-4.carditems
+    .card
+      img.card-image-top(src='https://images.pexels.com/photos/15516353/pexels-photo-15516353/free-photo-of-camera-photography-vintage-technology.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', alt='')
+      .card-body
+        h4.card-title
+          a(href=`/products/${veris.id}`) #{veris.name}
+        p.card-text.pt-2
+          |  #{veris.description}
+      .card-footer
+        small.text-muted
+          i.fa.fa-try
+            #{veris.price}
+      button.btn.btn-succsess
+          a(href=`/products/${veris.id}`) Detay Gör 
+      form(action="/cart"  method ="POST")
+        input(type="hidden" name="productid" value =`${veris.id}`)
+        button.btn.btn-outline-primary(type="submit") Karta Ekle
+       
+     
+
+
+
+
+

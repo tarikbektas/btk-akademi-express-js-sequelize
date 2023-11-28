@@ -1,0 +1,25 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      .container
+        a.navbar-brand(href='/') shoping
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/') Anasayfa
+          li.nav-item
+            a.nav-link(href='/products') ürün listesi  
+          li.nav-item
+           li.nav-item
+            .btn-group
+              button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                | Admin İşlemleri
+              .dropdown-menu
+                a.dropdown-item(href='/add-product') Ürün Ekle
+                a.dropdown-item(href='/admin/products') Ürün Yönet
+                a.dropdown-item(href='/add-category') Katagori Yönet
+                a.dropdown-item(href='/add-slider') slider Yönet
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link(href='/cart') Sipariş Kartı
+          li.nav-item
+            a.nav-link(href=' ') login
+          li.nav-item
+            a.nav-link(href='') register

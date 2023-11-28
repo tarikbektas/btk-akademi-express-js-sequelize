@@ -1,0 +1,26 @@
+extends ./layouts/main-layout.pug
+block content
+  h1 Slider Düzenle
+  form.mt-4(action='/edit-slider/post-edit-slider', method='post')
+            input(type="hidden" name="id" value=`${slider.id}`)
+            .form-group-row
+              label.col-sm-2.col-from-label.mt-2(for='ProductName') slayt Başlık 
+              .col-sm-10
+                input#name.form-control(type='text', name='baslik', placeholder=`${slider.baslik}` value=`${slider.baslik}`)
+            .form-group-row
+              label.col-sm-4.col-from-label.mt-2(for='ProductName') slayt açıklaması 
+              .col-sm-10
+                input#name.form-control(type='text', name='description', placeholder= `${slider.description}`)    
+            .form-group-row
+              label.col-sm-4.col-from-label.mt-2(for='ProductName') buton url
+              .col-sm-10
+                input#desc.form-control(type='text', name='url', placeholder=`${slider.url}`)
+            .form-group-row
+              label.col-sm-4.col-from-label.mt-2(for='ProductName') Görsel Url
+              .col-sm-10
+                input#desc.form-control(type='text', name='img', placeholder=`${slider.img}`)     
+            .form-group-row.mt-4
+                img(src=`${slider.img}`,style="widh")
+  
+            .form-group-row
+              input.btn.btn-primary.float-right(type='submit', value='slayt kaydet')  

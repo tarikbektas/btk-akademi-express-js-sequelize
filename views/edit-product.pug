@@ -1,0 +1,23 @@
+extends layouts/main-layout.pug
+block content
+        h1  #{product.name}
+        form(action='edit-product', method='post')
+            input(type="hidden" name="id" value=`${product.id}`)
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') isim
+              .col-sm-10
+                input#name.form-control(type='text', name='name', placeholder='ürün ismi' value=`${product.name}` )
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') ürün fiyat
+              .col-sm-10
+                input#price.form-control(type='text', name='price', placeholder='ürün fiyat'  value=`${product.price}`)
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') Ürün açıklama
+              .col-sm-10
+                input#desc.form-control(type='text', name='desc', placeholder='Ürün açıklama'  value=`${product.description}`)
+            .form-group-row
+              label.col-sm-2.col-from-label(for='ProductName') Ürün Görseli
+              .col-sm-10
+               img(src='https://images.pexels.com/photos/15516353/pexels-photo-15516353/free-photo-of-camera-photography-vintage-technology.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')
+            .form-group-row
+              input.btn.btn-primary.float-right(type='submit', value='ürün kaydet')

@@ -1,0 +1,85 @@
+ 
+include ./includes/createproduct.pug
+ 
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+    link(rel="stylesheet", href="style/style.css")
+     
+    title  #{title}
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+        .container
+          a.navbar-brand(href='/') shoping
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link(href='/') Anasayfa
+            li.nav-item
+              a.nav-link(href='/products') ürün listesi  
+            li.nav-item
+            li.nav-item
+              .btn-group
+                button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  | Admin İşlemleri
+                .dropdown-menu
+                  a.dropdown-item(href='/add-product') Ürün Ekle
+                  a.dropdown-item(href='/admin/products') Ürün Yönet
+                  a.dropdown-item(href='/add-category') Katagori Yönet
+                  a.dropdown-item(href='/add-slider') slider Yönet
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link(href='/cart') Sipariş Kartı
+            li.nav-item
+              a.nav-link(href=' ') login
+            li.nav-item
+              a.nav-link(href='') register   
+    .container(style='margin-top: 7%')
+      .row
+        .col-lg-3
+          .div Katagoriler
+          each catagory in category
+            .lis-group
+              a.list-group-item(href='') #{catagory.name}
+        .col-lg-9
+          .row
+          .carousel.slide.rol1(id="dynamicSlider" data-ride="carousel")
+            .carousel-inner
+              each slideritems in slider
+                if slideritems.id == 1
+                  .carousel-item.active
+                    img.d-block.w-100(src=` ${slideritems.img}`)
+                    .carousel-caption.d-none.d-md-block
+                      h5 #{slideritems.baslik}
+                      p #{slideritems.descripton}
+                      a(href=`${slideritems.url}` target="_blank")
+                       button.btn.btn-primary Yönlendirme
+                else 
+                 .carousel-item
+                    img.d-block.w-100(src=` ${slideritems.img}`)  
+                    .carousel-caption.d-none.d-md-block
+                      h5 #{slideritems.baslik}
+                      p #{slideritems.descripton}
+                      a(href=`${slideritems.url}` target="_blank")
+                       button.btn.btn-primary Yönlendirme
+            a.carousel-control-prev(href="#dynamicSlider", role="button", data-slide="prev")
+              span.carousel-control-prev-icon
+              span.sr-only Previous
+            a.carousel-control-next(href="#dynamicSlider", role="button", data-slide="next")
+              span.carousel-control-next-icon
+              span.sr-only Next
+          .row.mt-4
+              each veris in product
+                  +createproduct(veris)
+             
+
+    // Optional JavaScript
+    // jQuery first, then Popper.js, then Bootstrap JS
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+    script(src='https://kit.fontawesome.com/e4a83e9a16.js', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js', integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6', crossorigin='anonymous')
+    script(src='js/index.js')

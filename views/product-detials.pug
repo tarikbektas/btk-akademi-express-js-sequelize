@@ -1,0 +1,25 @@
+extends layouts/main-layout.pug
+block content
+     .container.mt-5
+      .card
+        .container-fliud
+          .wrapper.row
+           each veris in product
+            .preview.col-md-6
+              .preview-pic.tab-content
+                #pic-1.tab-pane.active.mh-100
+                  img.mw-100(src='https://images.pexels.com/photos/15516353/pexels-photo-15516353/free-photo-of-camera-photography-vintage-technology.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+            
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            .details.col-md-6
+              h3.product-title #{veris.name}
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              p.product-description
+                | #{veris.description}
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              small  katagori ismi : #{veris.categoryId}
+              h4.price
+                | Ürün Fiyatı : 
+                span #{veris.price}

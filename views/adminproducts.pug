@@ -1,0 +1,43 @@
+extends layouts/main-layout.pug
+block content
+     table.table.align-middle.mb-0.bg-white
+      thead.bg-light
+        tr
+          th Ürün Resmi
+          | &#x9;&#x9;
+          th &Uuml;r&uuml;n &Idot;smi
+          | &#x9;&#x9;
+          th &Uuml;r&uuml;n A&ccedil;&imath;klamas&imath;
+          | &#x9;&#x9;
+          th &Uuml;r&uuml;n Fiyat
+          | &#x9;&#x9;
+          th D&uuml;zenle
+      | &#x9;
+      tbody
+         each product in products
+            tr
+            td
+                .d-flex.align-items-center
+                img.rounded-circle(src='https://placehold.it/900x350', alt='', style='width: 45px; height: 45px')
+                | &#x9;&#x9;&#x9;
+                
+                
+            | &#x9;&#x9;
+            td
+                p.fw-normal.mb-1 #{product.name}
+                | &#x9;&#x9;  
+            
+            
+            td
+                p.fw-normal.mb-1 #{product.description}
+            
+            td    #{product.price}    
+            |      
+            td(style="display:flex")
+                
+                a.btn.btn-secondary.btn-sm.float-right.m-1(href=`/products/${product.id}`) Detay
+                a.btn.btn-secondary.btn-sm.float-right.m-1(href=`/edit-product/${product.id}`) Düzenle
+                form(action="/admin/products" method="POST" ) 
+                    input(type="hidden" name="productid" value=`${product.id}` )
+                    button.m-1(type="submit").btn.btn-danger Ürünü Sil
+         
